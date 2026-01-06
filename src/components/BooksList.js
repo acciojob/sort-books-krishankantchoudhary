@@ -20,15 +20,16 @@ const BooksList = () => {
       {/* SORT DROPDOWNS */}
       <h1>Books List</h1>
 
-      <label>Sort By</label>
+      <label>Sort by:</label>
+
       <select onChange={(e) => dispatch(setSortBy(e.target.value))}>
         <option value="title">Title</option>
         <option value="author">Author</option>
         <option value="publisher">Publisher</option>
       </select>
 
-      
-      <label>Order</label>
+
+      <label>Order:</label>
       <select onChange={(e) => dispatch(setOrder(e.target.value))}>
         <option value="asc">Ascending</option>
         <option value="desc">Descending</option>
