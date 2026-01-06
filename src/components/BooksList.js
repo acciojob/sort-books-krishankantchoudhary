@@ -6,7 +6,7 @@ import { selectSortedBooks } from "./selectors";
 const BooksList = () => {
   const dispatch = useDispatch();
   const books = useSelector(selectSortedBooks);
-  const { loading, error } = useSelector(state => state.books);
+  const { loading, error } = useSelector((state) => state.books);
 
   useEffect(() => {
     dispatch(fetchBooks());
@@ -16,26 +16,30 @@ const BooksList = () => {
   if (error) return <p>Error</p>;
 
   return (
-    <>
-      {/* SORT DROPDOWNS */}
+    <div>
+      {/* HEADER */}
       <h1>Books List</h1>
 
-      <label>Sort by:</label>
+      {/* SORT BY WRAPPER (1st child) */}
+      <div>
+        <label>Sort by:</label>
+        <select onChange={(e) => dispatch(setSortBy(e.target.value))}>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="publisher">Publisher</option>
+        </select>
+      </div>
 
-      <select onChange={(e) => dispatch(setSortBy(e.target.value))}>
-        <option value="title">Title</option>
-        <option value="author">Author</option>
-        <option value="publisher">Publisher</option>
-      </select>
+      {/* ORDER WRAPPER (2nd child) */}
+      <div>
+        <label>Order:</label>
+        <select onChange={(e) => dispatch(setOrder(e.target.value))}>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
 
-
-      <label>Order:</label>
-      <select onChange={(e) => dispatch(setOrder(e.target.value))}>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
-
-      {/* BOOKS TABLE */}
+      {/* TABLE */}
       <table>
         <thead>
           <tr>
@@ -46,7 +50,7 @@ const BooksList = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map(book => (
+          {books.map((book) => (
             <tr key={book.primary_isbn13}>
               <td>{book.title}</td>
               <td>{book.author}</td>
@@ -56,7 +60,7 @@ const BooksList = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
