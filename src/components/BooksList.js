@@ -21,33 +21,27 @@ const BooksList = () => {
       <h1>Books List</h1>
 
       {/* SORT BY WRAPPER (1st child) */}
-      
-        <label >
-          Sort by:</label>
-          <div>
-            <select onChange={(e) => dispatch(setSortBy(e.target.value))}>
+
+      <div>
+
+      <label>Sort by:
+        <select onChange={(e) => dispatch(setSortBy(e.target.value))}>
           <option value="title">Title</option>
           <option value="author">Author</option>
           <option value="publisher">Publisher</option>
         </select>
-          </div>
-        
-        
-      
+      </label>
 
       {/* ORDER WRAPPER (2nd child) */}
+
+      <label>Order:
       
-        <label>
-          Order:</label>
-          <div>
-            <select onChange={(e) => dispatch(setOrder(e.target.value))}>
+        <select onChange={(e) => dispatch(setOrder(e.target.value))}>
           <option value="ascending">Ascending</option>
           <option value="descending">Descending</option>
         </select>
-          </div>
-        
-      
-
+      </label>
+      </div>
       {/* TABLE */}
       <table>
         <thead>
